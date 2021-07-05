@@ -1,0 +1,91 @@
+.test-css {
+  font-size: 12px;
+  overflow: hidden;
+
+  .column-left {
+    height: 400px;
+    background-color: #fff;
+    position: relative;
+    float: left;
+  }
+
+  .column-right {
+    height: 400px;
+    padding: 16px;
+    background-color: #eee;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+
+  .resize-save {
+    position: absolute;
+    top: 0;
+    right: 5px;
+    bottom: 0;
+    left: 0;
+    padding: 16px;
+    overflow-x: hidden;
+  }
+
+  .resize-bar {
+    width: 150px;
+    min-width: 100px;
+    height: inherit;
+    resize: horizontal;
+    cursor: ew-resize;
+    opacity: 0;
+    overflow: scroll;
+  }
+
+  /* 拖拽线 */
+  .resize-line {
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    border-right: 2px solid #eee;
+    border-left: 1px solid #bbb;
+    pointer-events: none;
+  }
+
+  .resize-bar:hover~.resize-line,
+  .resize-bar:active~.resize-line {
+    border-left: 1px dashed skyblue;
+  }
+
+  .resize-bar::-webkit-scrollbar {
+    width: 200px;
+    height: inherit;
+  }
+
+  // 测试滚动
+  .scroll-css {
+    display: inline-block;
+    vertical-align: top;
+    background-color: rosybrown;
+    height: 80px;
+    position: relative;
+
+    .scroll-css-bar {
+      resize: horizontal;
+      overflow: scroll;
+      min-width: 100px;
+      width: 200px;
+      height: inherit;
+      opacity: 0;
+    }
+
+    .scroll-css-bar::-webkit-scrollbar {
+      width: 10px;
+      height: inherit;
+    }
+
+    .scroll-content {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 6px;
+    }
+  }
+}

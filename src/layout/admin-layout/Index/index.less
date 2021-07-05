@@ -1,0 +1,52 @@
+@layoutHead: 50px;
+@layoutLeftMenu: 180px;
+
+.admin-layout-container {
+  height: 100%;
+  padding-top: @layoutHead;
+  position: relative;
+
+  .layout-header {
+    height: @layoutHead;
+    line-height: @layoutHead;
+    background-color: #fff;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+
+  .layout-page-section {
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+
+    .layout-left-menu {
+      width: @layoutLeftMenu;
+      // min-width: @layoutLeftMenu;
+      background-color: #fff;
+      padding: 0 10px;
+      height: 100%;
+      overflow: auto;
+    }
+
+    .layout-page-container {
+      width: calc(100% - @layoutLeftMenu);
+      height: 100%;
+      padding: 10px 10px 0;
+      overflow: auto;
+    }
+
+    .layout-page-content {
+      height: 100%;
+      width: 100%;
+      overflow: auto;
+      background-color: #fff;
+      border-radius: 2px;
+      min-width: 600px;
+      padding: 0 16px;
+    }
+  }
+}
