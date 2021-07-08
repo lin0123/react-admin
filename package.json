@@ -8,9 +8,12 @@
     "test": "node scripts/test.js"
   },
   "dependencies": {
+    "@types/qs": "^6.9.7",
     "antd": "^4.11.2",
+    "axios": "^0.21.1",
     "classnames": "^2.2.6",
     "history": "^4.10.1",
+    "qs": "^6.10.1",
     "react": "^17.0.1",
     "react-activation": "^0.9.4",
     "react-dom": "^17.0.1",
