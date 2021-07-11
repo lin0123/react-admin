@@ -5,12 +5,24 @@ export default function reducer(
   action: ActionData,
 ) {
   switch (action.type) {
-    case 'test':
+    case 'menuChange':
       return {
         ...state,
         ...action,
       };
+    case 'menuFold':
+      return {
+        ...state,
+        isMenuFold: action.isMenuFold,
+        leftMenuW: action.leftMenuW,
+      };
+    case 'resize':
+      return {
+        ...state,
+        winH: window.innerHeight,
+        winW: window.innerWidth,
+      };
     default:
-      throw new Error('请确定提交数据是否定义');
+      throw new Error('没有提交修改的类型...');
   }
 }

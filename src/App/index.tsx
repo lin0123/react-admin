@@ -1,21 +1,31 @@
-import React, { useReducer } from 'react';
+import React, { useState, useEffect, useReducer } from 'react';
 import classNames from 'classnames';
 import Routes from '@/router/routes';
 import { ConfigProvider } from 'antd';
-import locale from 'antd/lib/locale/zh_CN';
+import zhCN from 'antd/lib/locale/zh_CN';
+import enUS from 'antd/lib/locale/en_US';
+import zhHK from 'antd/lib/locale/zh_HK';
+import {
+  ZH_CH, EN_US, ZH_HK, LangKeyT, LOCAL_LANG, LOCAL_LANG_STR,
+} from '@/constant';
+import { AliveScope } from 'react-activation';
 import { context } from '@/context';
 import reducer from '@/context/reducer';
 import data from '@/context/contextData';
 import '@/assets/style/bass.less';
+import i18n from '@/i18n';
 import './index.less';
 
 // const AdminLayout = React.lazy(() => import(
 //   /* webpackChunkName: 'admin-layout-index' */ '@/layout/admin-layout/Index'
 // ));
 
-// const TestPage = React.lazy(() => import(
-//   /* webpackChunkName: 'page-test' */ '@/pages/tests'
-// ));
+/** 配置antd的语言, 简体, 繁体, 英文三种类型 */
+const antdLangObj = {
+  [ZH_CH]: zhCN,
+  [EN_US]: enUS,
+  [ZH_HK]: zhHK,
+};
 
 interface AppTypes {
   className?: string;
@@ -24,13 +34,23 @@ interface AppTypes {
 const App: React.FC<AppTypes> = (props) => {
   const { className } = props;
   const store = useReducer(reducer, data);
+  const [currentLocal, setCurrentLocal] = useState(LOCAL_LANG);
+
+  useEffect(() => {
+    i18n.on('languageChanged', (lng) => {
+      localStorage.setItem(LOCAL_LANG_STR, lng);
+      setCurrentLocal(lng as LangKeyT);
+    });
+  }, []);
 
   return (
-    <ConfigProvider locale={locale}>
+    <ConfigProvider locale={antdLangObj[currentLocal]}>
       <context.Provider value={store}>
-        <div className={classNames('page-main-container', className)}>
-          <Routes />
-        </div>
+        <AliveScope>
+          <div className={classNames('page-main-container', className)}>
+            <Routes />
+          </div>
+        </AliveScope>
       </context.Provider>
     </ConfigProvider>
   );

@@ -4,6 +4,7 @@ import React, { useMemo } from 'react';
 import {
   Route, Switch, Redirect, RouteProps, RouteComponentProps,
 } from 'react-router-dom';
+import KeepAlive from 'react-activation';
 
 import routesConfig from '@/router/config';
 import { RouteChildren } from '@/router/interface';
@@ -48,10 +49,12 @@ const Routes: React.FC = () => {
           ) => (
             <Auth login={!!route.login} access={route.access}>
               <React.Suspense fallback={fallback}>
-                {React.createElement(
-                  Component,
-                  { ...routeProps as React.ClassAttributes<HTMLInputElement> },
-                )}
+                <KeepAlive name={props.path as string} id={routeProps.match.params.id as string}>
+                  {React.createElement(
+                    Component,
+                    { ...routeProps as React.ClassAttributes<HTMLInputElement> },
+                  )}
+                </KeepAlive>
               </React.Suspense>
             </Auth>
           );
