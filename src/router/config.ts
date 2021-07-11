@@ -9,14 +9,10 @@ const config: RouteChildren[] = [
     component: () => import('@/pages/Login'),
   },
   {
-    path: '/admin',
+    path: '/',
     layout: () => import('@/layout/admin-layout/Index'),
     login: true,
     children: [
-      {
-        path: 'test',
-        component: () => import('@/pages/admin-views/test'),
-      },
       {
         path: 'css',
         component: () => import('@/pages/admin-views/cssStyle'),
