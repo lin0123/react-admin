@@ -13,10 +13,12 @@
     "axios": "^0.21.1",
     "classnames": "^2.2.6",
     "history": "^4.10.1",
+    "i18next": "^20.3.2",
     "qs": "^6.10.1",
     "react": "^17.0.1",
     "react-activation": "^0.9.4",
     "react-dom": "^17.0.1",
+    "react-i18next": "^11.11.1",
     "react-router-dom": "^5.2.0"
   },
   "devDependencies": {

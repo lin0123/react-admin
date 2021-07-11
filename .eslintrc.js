@@ -37,6 +37,8 @@ module.exports = {
     '@typescript-eslint/no-unsafe-assignment': 0,
     '@typescript-eslint/no-unsafe-return': 0,
     'prefer-promise-reject-errors': 0,
+    '@typescript-eslint/no-floating-promises': 0,
+    '@typescript-eslint/no-empty-function': 0,
     'import/no-anonymous-default-export': 0,
     '@typescript-eslint/explicit-module-boundary-types': 0,
     'import/extensions': ['error', 'always', {
